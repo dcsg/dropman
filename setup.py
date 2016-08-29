@@ -42,11 +42,12 @@ class RunTests(Command):
 setup(
     name='dropman',
     version=__version__,
-    description='A digital ocean management command line program in Python.',
+    description='A CLI Tool to manage Digital Ocean Droplets.',
     long_description=long_description,
     url='https://github.com/dcsg/dropman',
     author='Daniel Gomes',
     author_email='me@danielcsgomes.com',
+
     license='MIT',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -58,10 +59,14 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.0',
+        'Programming Language :: Python :: 3.1',
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3 :: Only',
     ],
     keywords='digitalocean droplet droplets',
     packages=find_packages(exclude=['docs', 'tests*']),
