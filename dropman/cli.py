@@ -1,13 +1,13 @@
 """
-dropman
+DropMan - Digital Ocean Droplets Management
 
 Usage:
-  dropman list                      List all your droplets
-  dropman poweron <id>              Attempt to power on the <droplet id>
-  dropman poweroff <id>             Forces the shutdown the <droplet id>
-  dropman powercycle <id>           Forces the reboot of the <droplet id>
-  dropman reboot <id>               Attempt to graceful reboot the <droplet id>
-  dropman shutdown <id>             Attempt to graceful shutdown the <droplet id>
+  dropman list
+  dropman poweron <id>
+  dropman poweroff <id>
+  dropman powercycle <id>
+  dropman reboot <id>
+  dropman shutdown <id>
   dropman -h | --help
   dropman --version
 
@@ -22,7 +22,6 @@ Help:
   For help using this tool, please open an issue on the Github repository:
   https://github.com/dcsg/dropman
 """
-
 import os.path
 import yaml
 
@@ -58,6 +57,7 @@ def main():
             command = [command[1] for command in commands if command[0] != 'Base'][0]
             command = command(options)
             command.run(api_token=get_token())
+            return
 
 
 if __name__ == '__main__':

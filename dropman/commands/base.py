@@ -1,4 +1,5 @@
 """The base command."""
+from docopt import docopt
 
 
 class Base(object):
