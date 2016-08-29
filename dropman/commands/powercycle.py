@@ -17,7 +17,7 @@ class PowerCycle(Base):
                                                                                "power up ")
             is_active = False
             retries = 10
-            while is_active is False or retries > 0:
+            while is_active is False and retries > 0:
                 time.sleep(60)
                 droplet = manager.get_droplet(droplet_id)
 

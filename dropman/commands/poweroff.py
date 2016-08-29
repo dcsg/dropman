@@ -17,7 +17,7 @@ class PowerOff(Base):
 
             is_off = False
             retries = 10
-            while is_off is False or retries > 0:
+            while is_off is False and retries > 0:
                 time.sleep(10)
                 droplet = manager.get_droplet(droplet_id)
 

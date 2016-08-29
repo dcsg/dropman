@@ -17,8 +17,8 @@ class PowerOn(Base):
 
             is_active = False
             retries = 10
-            while is_active is False or retries > 0:
-                time.sleep(10)
+            while is_active is False and retries > 0:
+                time.sleep(15)
                 droplet = manager.get_droplet(droplet_id)
 
                 if droplet.status == 'active':
