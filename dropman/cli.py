@@ -2,21 +2,21 @@
 dropman
 
 Usage:
-  drop list                         List all your droplets
-  drop poweron <id>                 Attempt to power on of the <id> droplet
-  drop poweroff <id>                Forces the shutdown of the <id> droplet
-  drop powercycle <id>              Forces the reboot of the <id> droplet
-  drop reboot <id>                  Attempt to graceful reboot the <id> droplet
-  drop shutdown <id>                Attempt to graceful shutdown the <id> droplet
-  drop -h | --help
-  drop --version
+  dropman list                      List all your droplets
+  dropman poweron <id>              Attempt to power on the <droplet id>
+  dropman poweroff <id>             Forces the shutdown the <droplet id>
+  dropman powercycle <id>           Forces the reboot of the <droplet id>
+  dropman reboot <id>               Attempt to graceful reboot the <droplet id>
+  dropman shutdown <id>             Attempt to graceful shutdown the <droplet id>
+  dropman -h | --help
+  dropman --version
 
 Options:
   -h --help                         Show this screen.
   --version                         Show version.
 
 Examples:
-  drop list
+  dropman list
 
 Help:
   For help using this tool, please open an issue on the Github repository:
