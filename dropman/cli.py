@@ -21,7 +21,6 @@ Help:
 """
 import os.path
 import yaml
-import sys
 
 
 from inspect import getmembers, isclass
@@ -43,7 +42,6 @@ def get_token(config_path=None):
 
 
 def main():
-    sys.path.append(os.path.abspath('.'))
     """Main CLI entry point."""
     options = docopt(__doc__, version=VERSION)
 
