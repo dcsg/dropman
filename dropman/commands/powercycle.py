@@ -6,18 +6,18 @@ import time
 from .base import Base
 
 
-class PowerOn(Base):
+class PowerCycle(Base):
     @staticmethod
-    def power_on(droplet_id, droplet, manager):
+    def power_cycle(droplet_id, droplet, manager):
         if droplet.status == 'off':
-            droplet.power_on()
+            droplet.power_cycle()
 
-            print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is now being power on...")
-
+            print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is being shutdown the hard way and "
+                                                                               "power up ")
             is_active = False
             retries = 10
             while is_active is False or retries > 0:
-                time.sleep(10)
+                time.sleep(60)
                 droplet = manager.get_droplet(droplet_id)
 
                 if droplet.status == 'active':
@@ -41,4 +41,4 @@ class PowerOn(Base):
             print(err)
 
         if droplet is not None:
-            PowerOn.power_on(droplet_id, droplet, manager)
+            PowerCycle.power_cycle(droplet_id, droplet, manager)

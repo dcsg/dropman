@@ -1,1 +1,1 @@
-from . import list, shutdown, poweron
+from . import list, poweron, poweroff, powercycle, reboot, shutdown

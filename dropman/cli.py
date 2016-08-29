@@ -4,6 +4,9 @@ dropman
 Usage:
   drop list
   drop poweron <id>
+  drop poweroff <id>
+  drop powercycle <id>
+  drop reboot <id>
   drop shutdown <id>
   drop -h | --help
   drop --version

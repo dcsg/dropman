@@ -1,4 +1,4 @@
-"""The shutdown command."""
+"""The power on command."""
 
 import digitalocean
 import time
@@ -6,13 +6,13 @@ import time
 from .base import Base
 
 
-class Shutdown(Base):
+class PowerOff(Base):
     @staticmethod
-    def shutdown(droplet_id, droplet, manager):
-        if droplet.status == 'active':
-            droplet.shutdown()
+    def power_off(droplet_id, droplet, manager):
+        if droplet.status != 'active':
+            droplet.power_off()
 
-            print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is being shutdown...")
+            print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is now being power off...")
 
             is_off = False
             retries = 10
@@ -22,13 +22,13 @@ class Shutdown(Base):
 
                 if droplet.status == 'off':
                     is_off = True
-                    print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is now shutdown.")
+                    print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is now power off.")
 
                 retries -= 1
 
             return
 
-        print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is not running.")
+        print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is already power off.")
 
     def run(self, api_token):
         droplet_id = self.options['<id>']
@@ -41,4 +41,4 @@ class Shutdown(Base):
             print(err)
 
         if droplet is not None:
-            Shutdown.shutdown(droplet_id, droplet, manager)
+            PowerOff.power_off(droplet_id, droplet, manager)

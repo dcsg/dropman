@@ -7,13 +7,10 @@ from tabulate import tabulate
 
 
 class List(Base):
-
-    def run(self, api_token):
-        manager = digitalocean.Manager(token=api_token)
-        my_droplets = manager.get_all_droplets()
-
+    @staticmethod
+    def output_table(droplets):
         table = []
-        for droplet in my_droplets:
+        for droplet in droplets:
             table.append(
                 [
                     droplet.id,
@@ -24,3 +21,7 @@ class List(Base):
             )
 
         print(tabulate(table, headers=["ID", "Name", "Status", "Region"]))
+
+    def run(self, api_token):
+        manager = digitalocean.Manager(token=api_token)
+        self.output_table(manager.get_all_droplets())
