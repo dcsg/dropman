@@ -2,12 +2,12 @@
 dropman
 
 Usage:
-  drop list
-  drop poweron <id>
-  drop poweroff <id>
-  drop powercycle <id>
-  drop reboot <id>
-  drop shutdown <id>
+  drop list                         List all your droplets
+  drop poweron <id>                 Attempt to power on of the <id> droplet
+  drop poweroff <id>                Forces the shutdown of the <id> droplet
+  drop powercycle <id>              Forces the reboot of the <id> droplet
+  drop reboot <id>                  Attempt to graceful reboot the <id> droplet
+  drop shutdown <id>                Attempt to graceful shutdown the <id> droplet
   drop -h | --help
   drop --version
 
@@ -22,9 +22,9 @@ Help:
   For help using this tool, please open an issue on the Github repository:
   https://github.com/dcsg/dropman
 """
+
 import os.path
 import yaml
-
 
 from inspect import getmembers, isclass
 from docopt import docopt

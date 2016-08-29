@@ -1,7 +1,8 @@
-"""The shutdown command."""
+"""The reboot command."""
+
+import time
 
 import digitalocean
-import time
 
 from .base import Base
 

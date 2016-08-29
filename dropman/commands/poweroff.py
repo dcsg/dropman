@@ -1,7 +1,8 @@
-"""The power on command."""
+"""The power off command."""
+
+import time
 
 import digitalocean
-import time
 
 from .base import Base
 

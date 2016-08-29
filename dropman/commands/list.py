@@ -1,9 +1,9 @@
 """The list command."""
 
 import digitalocean
+from tabulate import tabulate
 
 from .base import Base
-from tabulate import tabulate
 
 
 class List(Base):
