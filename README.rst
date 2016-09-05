@@ -13,10 +13,16 @@ To install simply
 Configuration
 -------------
 
-DropMan will read the configuration file by default from your home directory `~/.dropman` but you can also create
-the configuration file wherever you want and specify as an option `dropman my_command --config-path=path/to/my/.dropman`
+.. role:: bash(code)
+   :language: bash
 
-Create the `.dropman` configuration file in your home directory or in any .
+**DropMan** will read the configuration file by *default* from your *home directory* :bash:`~/.dropman` but you can also
+create
+the configuration file wherever you want and specify as an option
+:bash:`$ dropman my_command --config-path=path/to/my/ .dropman`
+
+Create the :bash:`.dropman` configuration file in your home directory or in any .
+
 
 .. code-block:: bash
 
