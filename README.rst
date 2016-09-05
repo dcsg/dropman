@@ -13,7 +13,10 @@ To install simply
 Configuration
 -------------
 
-Create the `.dropman` configuration file in your home directory.
+DropMan will read the configuration file by default from your home directory `~/.dropman` but you can also create
+the configuration file wherever you want and specify as an option `dropman my_command --config-path=path/to/my/.dropman`
+
+Create the `.dropman` configuration file in your home directory or in any .
 
 .. code-block:: bash
 
@@ -40,6 +43,12 @@ List all droplets:
 
     $ dropman list
 
+Reboot a droplet:
+
+.. code-block:: bash
+
+    $ dropman reboot <id>
+
 Shutdown a droplet:
 
 .. code-block:: bash
@@ -51,3 +60,15 @@ Power On a droplet:
 .. code-block:: bash
 
     $ dropman poweron <id>
+
+Power Off (hard shutdown) a droplet:
+
+.. code-block:: bash
+
+    $ dropman poweroff <id>
+
+Power Cycle (hard reboot)  a droplet:
+
+.. code-block:: bash
+
+    $ dropman powercycle <id>
