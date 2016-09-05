@@ -41,9 +41,9 @@ class Shutdown(Base):
                 if droplet.status == 'off':
                     is_off = True
                     print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is now shutdown.")
+                    return
 
                 retries -= 1
-
             return
 
         print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is not running.")

@@ -41,9 +41,9 @@ class PowerOff(Base):
                 if droplet.status == 'off':
                     is_off = True
                     print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is now power off.")
+                    return
 
                 retries -= 1
-
             return
 
         print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is already power off.")

@@ -41,9 +41,9 @@ class PowerCycle(Base):
                 if droplet.status == 'active':
                     is_active = True
                     print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is now running.")
+                    return
 
                 retries -= 1
-
             return
 
         print("Droplet id/name: " + str(droplet.id) + "/" + droplet.name + " is already running.")
