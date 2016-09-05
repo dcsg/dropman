@@ -19,18 +19,19 @@
 DropMan - Digital Ocean Droplets Management
 
 Usage:
-  dropman list
-  dropman poweron <id>
-  dropman poweroff <id>
-  dropman powercycle <id>
-  dropman reboot <id>
-  dropman shutdown <id>
+  dropman list [--config-path=<path>]
+  dropman poweron <id> [--config-path=<path>]
+  dropman poweroff <id> [--config-path=<path>]
+  dropman powercycle <id> [--config-path=<path>]
+  dropman reboot <id> [--config-path=<path>]
+  dropman shutdown <id> [--config-path=<path>]
   dropman -h | --help
   dropman --version
 
 Options:
   -h --help                         Show this screen.
   --version                         Show version.
+  --config-path=<path>              The path for your .dropman configuration file.
 
 Examples:
   dropman list
@@ -40,21 +41,24 @@ Help:
   https://github.com/dcsg/dropman
 """
 import os.path
-import yaml
-
 from inspect import getmembers, isclass
+
+import yaml
 from docopt import docopt
-from .__init__ import __version__ as VERSION
+
+from .__init__ import __version__
 
 
 def get_token(config_path=None):
-    home = os.path.expanduser("~")
-    config_path = home + '/.dropman'
+    if config_path is None:
+        config_path = '~/.dropman'
 
-    if not os.path.isfile(config_path):
+    file = os.path.expanduser(config_path)
+
+    if not os.path.isfile(file):
         raise FileNotFoundError("Config " + config_path + " not found")
 
-    with open(config_path, 'r') as stream:
+    with open(file, 'r') as stream:
         config = yaml.load(stream)
 
     return config['token']
@@ -62,18 +66,18 @@ def get_token(config_path=None):
 
 def main():
     """Main CLI entry point."""
-    options = docopt(__doc__, version=VERSION)
+    options = docopt(__doc__, version=__version__)
 
     # Here we'll try to dynamically match the command the user is trying to run
     # with a pre-defined command class we've already created.
     for k, v in options.items():
         import dropman.commands
-        if hasattr(dropman.commands, k) and options[k] == True:
+        if hasattr(dropman.commands, k) and options[k] is True:
             module = getattr(dropman.commands, k)
             commands = getmembers(module, isclass)
             command = [command[1] for command in commands if command[0] != 'Base'][0]
             command = command(options)
-            command.run(api_token=get_token())
+            command.run(api_token=get_token(options['--config-path']))
             return
 
 
